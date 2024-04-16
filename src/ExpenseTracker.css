@@ -1,0 +1,55 @@
+/* Styles for PC */
+@media (min-width: 768px) {
+  .expense-tracker {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+}
+
+/* Styles for Mobile */
+@media (max-width: 767px) {
+  .expense-tracker {
+    padding: 10px;
+  }
+}
+
+.expense-tracker h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.expense-tracker select,
+.expense-tracker input[type="number"],
+.expense-tracker input[type="text"],
+.expense-tracker button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.expense-tracker button {
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}
+
+.expense-tracker button:hover {
+  background-color: darkgreen;
+}
+
+.expense-tracker ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expense-tracker li {
+  margin-bottom: 5px;
+}

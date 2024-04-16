@@ -1,0 +1,119 @@
+// react component for expense tracker update v3 added to ExpenseTracker.jsx; 
+//DO NOT EDIT. THIS IS A REUSABLE COMPONENT
+
+import React, { useState, useEffect } from "react";
+import "./ExpenseTracker.css";
+
+const ExpenseTracker = () => {
+  const [expenses, setExpenses] = useState([]);
+  const [currentExpense, setCurrentExpense] = useState("");
+  const [amount, setAmount] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [options] = useState([
+    "Food",
+    "Transport",
+    "School",
+    "Fees",
+    "Donations",
+  ]);
+
+  // Load stored expenses from localStorage when component mounts
+  useEffect(() => {
+    const storedExpenses = JSON.parse(localStorage.getItem("expenses"));
+    if (storedExpenses) {
+      setExpenses(storedExpenses);
+    }
+  }, []);
+
+  // Update stored expenses in localStorage whenever expenses state changes
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
+
+  /* const handleAddExpense = () => {
+    if (!selectedOption || !amount) {
+      alert("Please select an option and enter an amount.");
+      return;
+    }
+    const newExpense = { option: selectedOption, amount: parseFloat(amount) };
+    setExpenses([...expenses, newExpense]);
+    setCurrentExpense("");
+    setAmount("");
+  }; */
+
+  const handleAddExpense = () => {
+    let expenseToAdd = currentExpense;
+
+    if (currentExpense === "Other") {
+      if (!selectedOption || !amount) {
+        alert("Please enter a new option and amount.");
+        return;
+      }
+      expenseToAdd = selectedOption;
+    } else {
+      if (!currentExpense || !amount) {
+        alert("Please select an option and enter an amount.");
+        return;
+      }
+    }
+
+    const newExpense = { option: expenseToAdd, amount: parseFloat(amount) };
+    setExpenses([...expenses, newExpense]);
+    setCurrentExpense("");
+    setAmount("");
+  };
+
+  return (
+    <div>
+      <h2>Expense Tracker</h2>
+      <p>Current Date: {new Date().toDateString()}</p>
+
+      {/* Option Select */}
+      <select
+        value={currentExpense}
+        onChange={(e) => setCurrentExpense(e.target.value)}
+      >
+        <option value="">Select an option...</option>
+        {options.map((option, index) => (
+          <option key={index} value={option}>
+            {option}
+          </option>
+        ))}
+        <option value="Other">Other (Specify)</option>
+      </select>
+      {currentExpense === "Other" && (
+        <input
+          type="text"
+          placeholder="Enter new option"
+          onChange={(e) => setSelectedOption(e.target.value)}
+        />
+      )}
+
+      {/* Amount Input */}
+      <input
+        type="number"
+        placeholder="Enter amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+
+      {/* Add Expense Button */}
+      <button onClick={handleAddExpense}>Add Expense</button>
+
+      {/* Display Cumulative Expenses */}
+      <div>
+        <h3>Cumulative Expenses</h3>
+        <ul>
+          {expenses.map((expense, index) => (
+            <li key={index}>
+              {expense.option}: ${expense.amount.toFixed(2)}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default ExpenseTracker;
+
