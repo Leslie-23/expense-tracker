@@ -40,8 +40,12 @@ The Expense Tracker is a React component that allows users to track their expens
 
 ## Screenshots
 
-[Include screenshots or GIFs of the Expense Tracker component in action if applicable.]
+![2024-04-16](https://github.com/Leslie-23/expense-tracker/assets/97734325/bd9798f4-27d5-46de-938f-3f57375fa389)
+![2024-04-16 (3)](https://github.com/Leslie-23/expense-tracker/assets/97734325/ca383762-4f4d-4e9d-8067-0ef664271187)
+
+
+
 
 ## Author
 
-[Your Name or Username]
+[Leslie-23]
