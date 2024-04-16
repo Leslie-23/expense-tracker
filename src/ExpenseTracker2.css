@@ -1,0 +1,118 @@
+/* ExpenseTracker.css */
+
+/* Container styles */
+.expense-tracker-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.header {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Date styles */
+.date {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Input container styles */
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Select option styles */
+.select-option {
+  width: 180px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Other option input styles */
+.other-option {
+  width: 180px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Amount input styles */
+.amount-input {
+  width: 120px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Add button styles */
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+/* Expenses container styles */
+.expenses-container {
+  margin-top: 20px;
+}
+
+/* Expenses header styles */
+.expenses-header {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Expenses list styles */
+.expenses-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Expense item styles */
+.expense-item {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Total container styles */
+.total-container {
+  margin-top: 20px;
+}
+
+/* Total header styles */
+.total-header {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Total amount styles */
+.total-amount {
+  font-size: 24px;
+  color: #333;
+}

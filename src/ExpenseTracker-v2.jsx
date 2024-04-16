@@ -1,44 +1,15 @@
-import React, { useState, useEffect } from "react";
-import "./ExpenseTracker.css"; // Import the CSS file
+import React, { useState } from "react";
+import "./ExpenseTracker2.css";
 
 const ExpenseTracker2 = () => {
-  const [expenses, setExpenses] = useState([]);
   const [currentExpense, setCurrentExpense] = useState("");
-  const [amount, setAmount] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const [options] = useState([
-    "Food",
-    "Transport",
-    "School",
-    "Fees",
-    "Donations",
-  ]);
+  const [amount, setAmount] = useState("");
+  const [expenses, setExpenses] = useState([]);
+  const [totalExpense, setTotalExpense] = useState(0); // New state for total expense
 
-  // Load stored expenses from localStorage when component mounts
-  useEffect(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses"));
-    if (storedExpenses) {
-      setExpenses(storedExpenses);
-    }
-  }, []);
+  const options = ["Food", "Rent", "Transportation", "Entertainment", "Other"];
 
-  // Update stored expenses in localStorage whenever expenses state changes
-  useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
-
-  /* const handleAddExpense = () => {
-    if (!selectedOption || !amount) {
-      alert("Please select an option and enter an amount.");
-      return;
-    }
-    const newExpense = { option: selectedOption, amount: parseFloat(amount) };
-    setExpenses([...expenses, newExpense]);
-    setCurrentExpense("");
-    setAmount("");
-  }; */
-
-  // version update to the function;
   const handleAddExpense = () => {
     let expenseToAdd = currentExpense;
 
@@ -57,55 +28,71 @@ const ExpenseTracker2 = () => {
 
     const newExpense = { option: expenseToAdd, amount: parseFloat(amount) };
     setExpenses([...expenses, newExpense]);
+
+    // Update total expense
+    const newTotalExpense = totalExpense + parseFloat(amount);
+    setTotalExpense(newTotalExpense);
+
     setCurrentExpense("");
+    setSelectedOption("");
     setAmount("");
   };
 
   return (
-    <div className="expense-tracker">
-      {" "}
-      {/* Add the expense-tracker class */}
-      <h2>Expense Tracker</h2>
-      <p>Current Date: {new Date().toDateString()}</p>
-      {/* Option Select */}
-      <select
-        value={currentExpense}
-        onChange={(e) => setCurrentExpense(e.target.value)}
-      >
-        <option value="">Select an option...</option>
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-        <option value="Other">Other (Click to Specify)</option>
-      </select>
-      {currentExpense === "Other" && (
+    <div className="expense-tracker-container">
+      <h2 className="header">Expense Tracker</h2>
+      <p className="date">Current Date: {new Date().toDateString()}</p>
+
+      <div className="input-container">
+        <select
+          className="select-option"
+          value={currentExpense}
+          onChange={(e) => setCurrentExpense(e.target.value)}
+        >
+          <option value="">Select an option...</option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+          <option value="Other">Other (Specify)</option>
+        </select>
+        {currentExpense === "Other" && (
+          <input
+            type="text"
+            className="other-option"
+            placeholder="Enter new option"
+            value={selectedOption}
+            onChange={(e) => setSelectedOption(e.target.value)}
+          />
+        )}
+
         <input
-          type="text"
-          placeholder="Enter new option"
-          onChange={(e) => setSelectedOption(e.target.value)}
+          type="number"
+          className="amount-input"
+          placeholder="Enter amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
         />
-      )}
-      {/* Amount Input */}
-      <input
-        type="number"
-        placeholder="Enter amount"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      {/* Add Expense Button */}
-      <button onClick={handleAddExpense}>Add Expense</button>
-      {/* Display Cumulative Expenses */}
-      <div>
-        <h3>Cumulative Expenses</h3>
-        <ul>
+        <button className="add-button" onClick={handleAddExpense}>
+          Add Expense
+        </button>
+      </div>
+
+      <div className="expenses-container">
+        <h3 className="expenses-header">Cumulative Expenses</h3>
+        <ul className="expenses-list">
           {expenses.map((expense, index) => (
-            <li key={index}>
-              {expense.option}: ₵{expense.amount.toFixed(2)}
+            <li key={index} className="expense-item">
+              {expense.option}: ${expense.amount.toFixed(2)}
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="total-container">
+        <h3 className="total-header">Total Expense</h3>
+        <p className="total-amount">${totalExpense.toFixed(2)}</p>
       </div>
     </div>
   );
