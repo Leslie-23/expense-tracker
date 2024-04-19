@@ -8,7 +8,7 @@ const ExpenseTracker2 = () => {
   const [expenses, setExpenses] = useState([]);
   const [totalExpense, setTotalExpense] = useState(0); // New state for total expense
 
-  const options = ["Food", "Rent", "Transportation", "Entertainment", "Other"];
+  const options = ["Food", "Rent", "Transportation", "Entertainment"];
 
   const handleAddExpense = () => {
     let expenseToAdd = currentExpense;
@@ -84,7 +84,8 @@ const ExpenseTracker2 = () => {
         <ul className="expenses-list">
           {expenses.map((expense, index) => (
             <li key={index} className="expense-item">
-              {expense.option}: ${expense.amount.toFixed(2)}
+              {expense.option}: <span className="currency">GH₵</span>
+              {expense.amount.toFixed(2)}
             </li>
           ))}
         </ul>
@@ -92,7 +93,10 @@ const ExpenseTracker2 = () => {
 
       <div className="total-container">
         <h3 className="total-header">Total Expense</h3>
-        <p className="total-amount">${totalExpense.toFixed(2)}</p>
+        <p className="total-amount">
+          <span className="currency">GH₵</span>
+          {totalExpense.toFixed(2)}
+        </p>
       </div>
     </div>
   );
