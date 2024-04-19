@@ -48,4 +48,4 @@ The Expense Tracker is a React component that allows users to track their expens
 
 ## Author
 
-[Leslie-23]
+### Leslie-23
