@@ -3,6 +3,7 @@
 /* Container styles */
 .expense-tracker-container {
   max-width: 600px;
+  overflow-x: hidden;
   margin: 0 auto;
   padding: 20px;
   background-color: #f4f4f4;
@@ -119,4 +120,50 @@
 .currency {
   font-size: 14px;
   color: #10a608;
+}
+.infoAside {
+  font-size: 10px;
+  background-color: green;
+  color: white;
+  font-style: oblique;
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+  padding: 3px;
+  padding-right: 3px;
+  border-radius: 50%;
+  border: 0.2px solid black;
+}
+.infoAside:hover {
+  background-color: rgb(1, 65, 1);
+  border: 0.2px solid black;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .expense-tracker-container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .header {
+    font-size: 20px; /* Adjust font size for smaller screens */
+  }
+
+  .date {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .input-container {
+    gap: 5px; /* Reduce gap between input fields for smaller screens */
+  }
+
+  .select-option,
+  .other-option,
+  .amount-input,
+  .add-button {
+    padding: 6px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .infoAside {
+    font-size: 8px; /* Adjust font size for smaller screens */
+    padding: 2px; /* Adjust padding for smaller screens */
+  }
 }
